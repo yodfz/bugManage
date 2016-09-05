@@ -14,12 +14,15 @@ var bugManage = {
             push: '/pushMsg'
         }
     },
+    _getMessage(_obj){
+        return encodeURIComponent(_obj.url.replace(window.location.origin, '') + '\n\r' + _obj.lineNo + ':' + _obj.colNo + _obj.msg);
+    },
     //将error事件绑定
     bindEvent: function () {
         this._oldOnError = window.onerror;
         window.onerror = this.onerror;
     },
-    // 发送消息
+    // 发送消息,也可用于主动触发
     pushMessage: function (_obj) {
         var _img = new Image();
         // 防止一些浏览器在image未执行完成就开始GC
@@ -27,8 +30,7 @@ var bugManage = {
             _img.onload = _img.onerror = null;
             _img = null;
         };
-        var _msg = _obj.url + '\n\r' + _obj.lineno + ':' + _obj.colno + _obj.msg;
-        _img.src = this._config.url + this._config.apiUrl.push + '?msg=' + encodeURIComponent(_msg);
+        _img.src = this._config.url + this._config.apiUrl.push + '?msg=' + this._getMessage(_obj);
     },
     // 挂接onerror内容
     onerror: function (msg, url, lineno, colno, error) {
@@ -36,8 +38,8 @@ var bugManage = {
         this.pushMessage({
             msg: msg,
             url: url,
-            lineno: lineno,
-            colno: colno
+            lineNo: lineno,
+            colNo: colno
         });
     }
 };
