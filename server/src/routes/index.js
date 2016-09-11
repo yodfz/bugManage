@@ -6,11 +6,11 @@ import NotFound from '../components/NotFound';
 const Routes = ({ history }) =>
   <Router history={history}>
     <Route path="/" component={App}/>
-    <Route path="/actived" component={App}/>
-    <Route path="/completed" component={App}/>
     <Route path="*" component={NotFound}/>
   </Router>;
 
+//<Route path="/actived" component={App}/>
+//<Route path="/completed" component={App}/>
 //const _Routes = {
 //  path: '/',
 //  component: App,
