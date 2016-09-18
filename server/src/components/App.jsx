@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import Todos from './Todos/Todos';
-import MainLayout from '../layouts/MainLayout/MainLayout';
 import IndexLayout from '../layouts/MainLayout/indexLayout';
+import Main from './SinglePage/Main';
 const App = ({ location }) => {
   return (
     <IndexLayout>
-      <Todos location={location} />
+      <Main location={location} />
     </IndexLayout>
   );
 };
