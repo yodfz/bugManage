@@ -7,7 +7,7 @@ const template = () => {
   return (
     <DefaultTemplate>
       <div className="main">
-        站点配置
+        短信配置
       </div>
     </DefaultTemplate>
   );
