@@ -1,12 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { Menu, Breadcrumb, Icon, Row , Col , Badge } from 'antd';
+import defaultTemplate from '../../layouts/MainLayout/defaultTemplate';
+import styles from './site.less';
 
-import DefaultTemplate from '../../layouts/MainLayout/defaultTemplate';
-
-import styles from './Main.less';
 const template = () => {
   return (
-    <DefaultTemplate>
+    <defaultTemplate>
       <div className="main">
         <Row>
           <Col className="line-20" span="8">
@@ -23,7 +22,7 @@ const template = () => {
           </Col>
         </Row>
       </div>
-    </DefaultTemplate>
+    </defaultTemplate>
   );
 };
 
