@@ -15,10 +15,13 @@ const template = () => {
     <DefaultTemplate>
       <div className="site">
         <Form onSubmit={handleSubmit}>
-          <FormItem
-            label="站点名称"
-          >
+          <FormItem label="站点名称">
             <Input placeholder="请输入站点名称"
+              {...getFieldProps('userName')}
+            />
+          </FormItem>
+          <FormItem label="AppKey">
+            <Input placeholder="请输入AppKey"
               {...getFieldProps('userName')}
             />
           </FormItem>
