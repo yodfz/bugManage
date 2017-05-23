@@ -5,7 +5,7 @@ var bugManage = {
         url: '',
         // 发送消息类型 image,ajax
         // ajax可能需要配置跨域
-        pushType: 'image',
+        // pushType: 'image',
         // 应用ID
         appId: '',
         // 应用密匙
@@ -15,7 +15,14 @@ var bugManage = {
         }
     },
     _getMessage(_obj){
-        return encodeURIComponent(_obj.url.replace(window.location.origin, '') + '\n\r' + _obj.lineNo + ':' + _obj.colNo + _obj.msg);
+        var postmessageObj = {
+            path: _obj.url.replace(window.location.origin, ''),
+            lineNo: _obj.lineNo,
+            colNo: _obj.colNo,
+            msg: _obj.msg
+        };
+
+        return JSON.stringify(postmessageObj);
     },
     //将error事件绑定
     bindEvent: function () {
