@@ -1,4 +1,6 @@
-var bugManage = {
+var bugManage = function () {
+}
+bugManage.prototype = {
     //配置相关
     _config: {
         // 服务器根目录
@@ -21,13 +23,13 @@ var bugManage = {
             colNo: _obj.colNo,
             msg: _obj.msg
         };
-
+        console.log(postmessageObj);
         return JSON.stringify(postmessageObj);
     },
     //将error事件绑定
     bindEvent: function () {
         this._oldOnError = window.onerror;
-        window.onerror = this.onerror;
+        window.onerror = this.onerror.bind(this);
     },
     // 发送消息,也可用于主动触发
     pushMessage: function (_obj) {
@@ -43,11 +45,11 @@ var bugManage = {
     onerror: function (msg, url, lineno, colno, error) {
         this._oldOnError && this._oldOnError.apply(null, arguments);
         this.pushMessage({
-            msg: msg,
+            msg: msg + '\n\r' + error.stack,
             url: url,
             lineNo: lineno,
             colNo: colno
         });
     }
 };
-bugManage.bindEvent();
+(new bugManage()).bindEvent();
