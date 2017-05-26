@@ -10,10 +10,8 @@ bugManage.prototype = {
         // pushType: 'image',
         // 应用ID
         appId: '',
-        // 应用密匙
-        appSecret: '',
         apiUrl: {
-            push: '/pushMsg'
+            push: '/pushMsg'.items-Content-Title
         }
     },
     _getMessage(_obj){
